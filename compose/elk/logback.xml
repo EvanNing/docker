@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false" scanPeriod="30 seconds" >
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+   <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <param name="Encoding" value="UTF-8"/>
+        <remoteHost>localhost</remoteHost>
+        <port>4567</port>
+        <!-- encoder is required -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+    <logger name="com.zhijia" level="TRACE" additivity="false">
+        <appender-ref ref="logstash" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="logstash" />
+    </root>

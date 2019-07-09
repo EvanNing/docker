@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+ web:
+   image: 192.168.177.248/nginx/nginx:v190704
+   ports:
+     - 80:80
+   deploy:
+     mode: replicated
+     replicas: 4
